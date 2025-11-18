@@ -36,3 +36,5 @@ Datos del registro de visitas y compras y datos sobre el estado actual de la mem
 - 'Avg_class_frequency_current_month' — frecuencia media de visitas por semana durante el mes en curso.
 'Avg_additional_charges_total' — cantidad total de dinero gastado en otros servicios del gimnasio: cafetería, productos deportivos, cosméticos, masajes, etc.
 
+<a href="https://github.com/LuisPeza/Proyecto_13/blob/main/Proyecto_13_pronosticos.ipynb">Abrir proyecto</a>.
+
