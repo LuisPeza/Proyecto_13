@@ -37,18 +37,18 @@ Datos del registro de visitas y compras y datos sobre el estado actual de la mem
 'Avg_additional_charges_total' — cantidad total de dinero gastado en otros servicios del gimnasio: cafetería, productos deportivos, cosméticos, masajes, etc.
 
 <h2>Conclusiones</h2>
-- Llega a conclusiones y formula recomendaciones con respecto a la estrategia para la interacción y retención de clientes.
-- No necesitas entrar en detalles. Bastarán tres o cuatro principios esenciales y ejemplos de su implementación en forma de pasos de marketing específicos.
-- Para las conclusiones se observa que la mayoria que esta en el cluster 4 que son los mas propensos a irse y los del cluster 0 los de mayor lealtad podemos aplicar lo siguiente para mitigar la cancelacion del servicio:
-- Para el cluster 0 los catalogamos como los de mayor poder adquisitivo. Para ellos podemos.
-- Implementar un servicio premium o membresia, como acceso a clases personalizadas
-- Espacios exclusivos para hacer sus ejercicios.
-- Incluirle algunos productos con el pago de su menbresia.
-- Para el cluster 4 que son los de menor edad y que pudieran tener menor poder adquisitivo.
-- se le pueden hacer descuentos y promociones.
-- Otorgarle algun tipo de credito para que paguen a meses.
-- Que si no vive cerca de donde esta el gym obtenga algun descuento especial.
-- Darle cupones por si vienen ciertos dias a la semana y con esto puedo adquirir algun producto de la tienda del gym.
+- 'Llega a conclusiones y formula recomendaciones con respecto a la estrategia para la interacción y retención de clientes'.
+- 'No necesitas entrar en detalles. Bastarán tres o cuatro principios esenciales y ejemplos de su implementación en forma de pasos de marketing específicos'.
+- 'Para las conclusiones se observa que la mayoria que esta en el cluster 4 que son los mas propensos a irse y los del cluster 0 los de mayor lealtad podemos aplicar lo siguiente para mitigar la cancelacion del servicio':
+- 'Para el cluster 0 los catalogamos como los de mayor poder adquisitivo. Para ellos podemos'.
+- 'Implementar un servicio premium o membresia, como acceso a clases personalizadas'.
+- 'Espacios exclusivos para hacer sus ejercicios'.
+- 'Incluirle algunos productos con el pago de su menbresia'.
+- 'Para el cluster 4 que son los de menor edad y que pudieran tener menor poder adquisitivo'.
+- 'Se le pueden hacer descuentos y promociones'.
+- 'Otorgarle algun tipo de credito para que paguen a meses'.
+- 'Que si no vive cerca de donde esta el gym obtenga algun descuento especial'.
+- 'Darle cupones por si vienen ciertos dias a la semana y con esto puedo adquirir algun producto de la tienda del gym'.
 
 <a href="https://github.com/LuisPeza/Proyecto_13/blob/main/Proyecto_13_pronosticos.ipynb">Abrir proyecto</a>.
 
