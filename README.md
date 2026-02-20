@@ -1,104 +1,59 @@
-<h1> Proyecto_13 </h1>
-Pronósticos y predicciones
+# Proyecto 13: Estrategias de Retención Model Fitness
+> **Análisis de Pronósticos y Predicciones de Churn**
 
-<h2>Descripción del proyecto</h2>
-La cadena de gimnasios Model Fitness está desarrollando una estrategia de interacción con clientes basada en datos analíticos.
+---
 
-Uno de los problemas más comunes que enfrentan los gimnasios y otros servicios es la pérdida de clientes. ¿Cómo descubres si un/a cliente ya no está contigo? Puedes calcular la pérdida en función de las personas que se deshacen de sus cuentas o no renuevan sus contratos. Sin embargo, a veces no es obvio que un/a cliente se haya ido: puede que se vaya de puntillas.
+## 📋 Descripción del Proyecto
+La cadena de gimnasios **Model Fitness** está desarrollando una estrategia de interacción con clientes basada en datos analíticos. El desafío principal es combatir la **tasa de cancelación (churn)**.
 
-Los indicadores de pérdida varían de un campo a otro. Si un usuario o una usuaria compra en una tienda en línea con poca frecuencia, pero con regularidad, no se puede decir que ha huido. Pero si durante dos semanas no ha abierto un canal que se actualiza a diario, es motivo de preocupación: es posible que tu seguidor o seguidor/a se haya aburrido y te haya abandonado.
+En el contexto de un gimnasio, la pérdida se define cuando un cliente deja de asistir durante **un mes**. El objetivo es identificar estos patrones antes de que el cliente abandone definitivamente la membresía.
 
-En el caso de un gimnasio, tiene sentido decir que un/a cliente se ha ido si no viene durante un mes. Por supuesto, es posible que estén en Cancún y retomen sus visitas cuando regresen, pero ese no es un caso típico. Por lo general, si un/a cliente se une, viene varias veces y luego desaparece, es poco probable que regrese.
+### 🎯 Objetivo
+Analizar los perfiles digitalizados de los clientes para elaborar una estrategia de retención efectiva basada en su comportamiento y características demográficas.
 
-<h3>Objetivo</h3>
-Con el fin de combatir la cancelación, Model Fitness ha digitalizado varios de sus perfiles de clientes. Tu tarea consiste en analizarlos y elaborar una estrategia de retención de clientes.
+---
 
-<h3>Descripcion de los datos</h3>
+## 📊 Descripción de los Datos
+Los datos contienen información del mes actual y el historial previo.
 
-Model Fitness te aportó archivos CSV que contienen los datos sobre la cancelación de un mes en concreto e información del mes que lo precedía.
+### Información del Usuario
+| Campo | Descripción |
+| :--- | :--- |
+| `gender` | Género del usuario. |
+| `Near_Location` | Proximidad al gimnasio (vive o trabaja cerca). |
+| `Partner` | Empleado de una compañía asociada (descuento corporativo). |
+| `Promo_friends` | Registro mediante oferta "Trae a un amigo". |
+| `Phone` | Disponibilidad de número telefónico. |
+| `Age` | Edad del usuario. |
+| `Lifetime` | Meses desde su primera visita. |
 
-- 'Churn' — la cancelación para el mes en cuestión
-Campos de dataset actuales:
-Datos del usuario del mes anterior
-- 'gender'.
-- 'Near_Location' — si el/la usuario/a vive o trabaja en el vecindario donde se encuentra el gimnasio.
-- 'Partner' — si el/la usuario/a trabaja en una compañía asociada (el gimnasio tiene empresas asociadas cuyos empleados obtienen descuentos; en esos casos el gimnasio almacena información sobre los empleadores de los clientes).
-- Promo_friends — si el/la usuario/a originalmente se inscribió mediante una oferta “trae a un/a amigo/a” (se utilizó el código promocional de un/a amigo/a cuando pagaron el primer abono).
-- 'Phone' — si el/la usuario/a aportó el número de teléfono.
-- 'Age'.
-- 'Lifetime' — el tiempo (en meses) desde que el/la usuario/a llegó por primera vez al gimnasio.
+### Historial y Membresía
+* **`Contract_period`**: Duración del contrato (1, 3, 6 o 12 meses).
+* **`Month_to_end_contract`**: Meses restantes para el vencimiento.
+* **`Group_visits`**: Participación en clases grupales.
+* **`Avg_class_frequency_total`**: Promedio de visitas semanales histórico.
+* **`Avg_additional_charges_total`**: Gasto total en servicios extras (cafetería, masajes, etc.).
+* **`Churn`**: Cancelación del mes en cuestión (Variable objetivo).
 
-Datos del registro de visitas y compras y datos sobre el estado actual de la membresía:
-- 'Contract_period' — 1 mes, 3 meses, 6 meses o 1 año.
-- 'Month_to_end_contract' — los meses que faltan hasta que expire el contrato.
-- 'Group_visits' — si el/la usuario/a participa en sesiones grupales.
-- 'Avg_class_frequency_total' — frecuencia media de visitas por semana a lo largo de la vida del cliente.
-- 'Avg_class_frequency_current_month' — frecuencia media de visitas por semana durante el mes en curso.
-'Avg_additional_charges_total' — cantidad total de dinero gastado en otros servicios del gimnasio: cafetería, productos deportivos, cosméticos, masajes, etc.
+---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 800px; margin: 20px auto; padding: 20px; }
-    
-    .intro { background: #f8f9fa; border-left: 5px solid #2c3e50; padding: 15px; margin-bottom: 30px; border-radius: 4px; }
-    
-    .cluster-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    
-    .card { border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    
-    .high-loyalty { border-top: 5px solid #27ae60; }
-    .high-risk { border-top: 5px solid #e74c3c; }
-    
-    h2 { font-size: 1.2rem; margin-top: 0; color: #2c3e50; }
-    h3 { font-size: 1rem; color: #7f8c8d; margin-bottom: 15px; }
-    
-    ul { padding-left: 20px; }
-    li { margin-bottom: 10px; }
-    
-    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
-    .badge-green { background: #d4edda; color: #155724; }
-    .badge-red { background: #f8d7da; color: #721c24; }
-</style>
-</head>
-<body>
+## 💡 Conclusiones y Estrategias Sugeridas
 
-<div class="container">
-    <div class="intro">
-        <strong>Conclusiones del Análisis:</strong> Se observa que el <strong>Cluster 4</strong> representa a los usuarios con mayor riesgo de fuga, mientras que el <strong>Cluster 0</strong> muestra la mayor lealtad. A continuación, se proponen estrategias de mitigación:
-    </div>
+Tras el análisis de segmentación, se han priorizado dos grupos clave para aplicar medidas de mitigación inmediatas:
 
-    <div class="cluster-grid">
-        <div class="card high-loyalty">
-            <span class="badge badge-green">Mayor Lealtad</span>
-            <h2>Cluster 0: Premium</h2>
-            <h3>Perfil: Alto poder adquisitivo</h3>
-            <ul>
-                <li><strong>Servicio Premium:</strong> Membresía con acceso a clases personalizadas.</li>
-                <li><strong>Exclusividad:</strong> Espacios preferenciales para entrenamiento.</li>
-                <li><strong>Beneficios Físicos:</strong> Inclusión de productos oficiales con el pago de membresía.</li>
-            </ul>
-        </div>
+### 🟢 Cluster 0: Clientes de Alta Lealtad
+**Perfil:** Usuarios de mayor poder adquisitivo y compromiso.
+* **Servicio Premium:** Membresías con acceso a clases personalizadas.
+* **Exclusividad:** Acceso a zonas VIP o espacios exclusivos de ejercicio.
+* **Fidelización:** Kit de productos del gym (merchandising) incluido en su anualidad.
 
-        <div class="card high-risk">
-            <span class="badge badge-red">Propenso a Cancelar</span>
-            <h2>Cluster 4: Jóvenes</h2>
-            <h3>Perfil: Menor edad y presupuesto</h3>
-            <ul>
-                <li><strong>Flexibilidad Financiera:</strong> Descuentos, promociones y créditos a meses sin intereses.</li>
-                <li><strong>Incentivo Geográfico:</strong> Descuento especial por lejanía del gimnasio.</li>
-                <li><strong>Gamificación:</strong> Cupones canjeables en la tienda del gym por asistencia regular.</li>
-            </ul>
-        </div>
-    </div>
-</div>
+### 🔴 Cluster 4: Clientes en Riesgo
+**Perfil:** Usuarios jóvenes con menor presupuesto o propensos al abandono.
+* **Flexibilidad Económica:** Promociones por volumen o créditos para pago a plazos.
+* **Bono de Distancia:** Descuentos especiales para quienes no viven cerca del centro.
+* **Gamificación:** Cupones de tienda canjeables por asistencia constante (recompensa por hábito).
 
-</body>
-</html>
+---
 
-
-<a href="https://github.com/LuisPeza/Proyecto_13/blob/main/Proyecto_13_pronosticos.ipynb">Abrir proyecto</a>.
-
+## 🔗 Enlaces del Proyecto
+* [📂 Ver Notebook en GitHub](https://github.com/LuisPeza/Proyecto_13/blob/main/Proyecto_13_pronosticos.ipynb)
