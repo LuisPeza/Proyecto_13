@@ -36,17 +36,69 @@ Datos del registro de visitas y compras y datos sobre el estado actual de la mem
 - 'Avg_class_frequency_current_month' — frecuencia media de visitas por semana durante el mes en curso.
 'Avg_additional_charges_total' — cantidad total de dinero gastado en otros servicios del gimnasio: cafetería, productos deportivos, cosméticos, masajes, etc.
 
-<h2>Conclusiones</h2>
-- 'Para las conclusiones se observa que la mayoria que esta en el cluster 4 que son los mas propensos a irse y los del cluster 0 los de mayor lealtad podemos aplicar lo siguiente para mitigar la cancelacion del servicio':
-- 'Para el cluster 0 los catalogamos como los de mayor poder adquisitivo. Para ellos podemos'.
-- 'Implementar un servicio premium o membresia, como acceso a clases personalizadas'.
-- 'Espacios exclusivos para hacer sus ejercicios'.
-- 'Incluirle algunos productos con el pago de su menbresia'.
-- 'Para el cluster 4 que son los de menor edad y que pudieran tener menor poder adquisitivo'.
-- 'Se le pueden hacer descuentos y promociones'.
-- 'Otorgarle algun tipo de credito para que paguen a meses'.
-- 'Que si no vive cerca de donde esta el gym obtenga algun descuento especial'.
-- 'Darle cupones por si vienen ciertos dias a la semana y con esto puedo adquirir algun producto de la tienda del gym'.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 800px; margin: 20px auto; padding: 20px; }
+    
+    .intro { background: #f8f9fa; border-left: 5px solid #2c3e50; padding: 15px; margin-bottom: 30px; border-radius: 4px; }
+    
+    .cluster-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    
+    .card { border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    
+    .high-loyalty { border-top: 5px solid #27ae60; }
+    .high-risk { border-top: 5px solid #e74c3c; }
+    
+    h2 { font-size: 1.2rem; margin-top: 0; color: #2c3e50; }
+    h3 { font-size: 1rem; color: #7f8c8d; margin-bottom: 15px; }
+    
+    ul { padding-left: 20px; }
+    li { margin-bottom: 10px; }
+    
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+    .badge-green { background: #d4edda; color: #155724; }
+    .badge-red { background: #f8d7da; color: #721c24; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="intro">
+        <strong>Conclusiones del Análisis:</strong> Se observa que el <strong>Cluster 4</strong> representa a los usuarios con mayor riesgo de fuga, mientras que el <strong>Cluster 0</strong> muestra la mayor lealtad. A continuación, se proponen estrategias de mitigación:
+    </div>
+
+    <div class="cluster-grid">
+        <div class="card high-loyalty">
+            <span class="badge badge-green">Mayor Lealtad</span>
+            <h2>Cluster 0: Premium</h2>
+            <h3>Perfil: Alto poder adquisitivo</h3>
+            <ul>
+                <li><strong>Servicio Premium:</strong> Membresía con acceso a clases personalizadas.</li>
+                <li><strong>Exclusividad:</strong> Espacios preferenciales para entrenamiento.</li>
+                <li><strong>Beneficios Físicos:</strong> Inclusión de productos oficiales con el pago de membresía.</li>
+            </ul>
+        </div>
+
+        <div class="card high-risk">
+            <span class="badge badge-red">Propenso a Cancelar</span>
+            <h2>Cluster 4: Jóvenes</h2>
+            <h3>Perfil: Menor edad y presupuesto</h3>
+            <ul>
+                <li><strong>Flexibilidad Financiera:</strong> Descuentos, promociones y créditos a meses sin intereses.</li>
+                <li><strong>Incentivo Geográfico:</strong> Descuento especial por lejanía del gimnasio.</li>
+                <li><strong>Gamificación:</strong> Cupones canjeables en la tienda del gym por asistencia regular.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
 
 <a href="https://github.com/LuisPeza/Proyecto_13/blob/main/Proyecto_13_pronosticos.ipynb">Abrir proyecto</a>.
 
